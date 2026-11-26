@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>选品雷达 · 智能选品 Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><i data-lucide="radar"></i></div>
+        <div class="brand-text">
+          <strong>选品雷达</strong>
+          <span>SmartSourcing Agent</span>
+        </div>
+      </div>
+
+      <div class="nav-label">工作台</div>
+      <nav class="nav" id="nav">
+        <button class="nav-item active" data-section="overview"><i data-lucide="layout-dashboard"></i><span>总览驾驶舱</span></button>
+      </nav>
+
+      <div class="nav-label">三路监控</div>
+      <nav class="nav" id="nav-monitor">
+        <button class="nav-item" data-section="social"><i data-lucide="megaphone"></i><span>舆论监控</span><em class="dot hot"></em></button>
+        <button class="nav-item" data-section="ecommerce"><i data-lucide="shopping-bag"></i><span>电商数据</span><em class="dot"></em></button>
+        <button class="nav-item" data-section="reviews"><i data-lucide="message-square-text"></i><span>评论挖掘</span><em class="dot warn"></em></button>
+      </nav>
+
+      <div class="nav-label">决策与执行</div>
+      <nav class="nav" id="nav-action">
+        <button class="nav-item" data-section="decision"><i data-lucide="sparkles"></i><span>选品决策</span></button>
+        <button class="nav-item" data-section="suppliers"><i data-lucide="factory"></i><span>1688 供应商比价</span></button>
+        <button class="nav-item" data-section="listing"><i data-lucide="package-check"></i><span>上架草稿</span></button>
+        <button class="nav-item" data-chat="true"><i data-lucide="bot"></i><span>AI 选品助手</span><em class="dot hot"></em></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="engine-status">
+          <span class="pulse"></span>
+          <div><strong>Agent 运行中</strong><small>上次同步 2 分钟前</small></div>
+        </div>
+        <button class="ghost-btn" id="settingsBtn"><i data-lucide="settings-2"></i> 数据源配置</button>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="breadcrumb"><span>工作台</span><i data-lucide="chevron-right"></i><strong id="crumb">总览驾驶舱</strong></div>
+        </div>
+        <div class="topbar-right">
+          <div class="sync-pill"><span class="pulse"></span> 三路数据已同步</div>
+          <button class="icon-btn" id="notifyBtn" title="通知"><i data-lucide="bell"></i><span class="badge">3</span></button>
+          <button class="icon-btn" title="刷新" id="refreshBtn"><i data-lucide="refresh-cw"></i></button>
+          <div class="avatar">LM</div>
+        </div>
+      </header>
+
+      <main id="app"></main>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <!-- 智能对话助手 -->
+  <button class="chat-fab" id="chatFab" title="智能选品助手"><i data-lucide="bot"></i><span class="fab-badge">AI</span></button>
+
+  <section class="chat-panel" id="chatPanel">
+    <div class="chat-head">
+      <div class="chat-head-title">
+        <div class="chat-avatar"><i data-lucide="sparkles"></i></div>
+        <div><strong>选品助手</strong><small><span class="pulse"></span> 在线 · 基于三路数据</small></div>
+      </div>
+      <button class="icon-btn" id="chatClose" title="收起"><i data-lucide="x"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-quick" id="chatQuick">
+      <button class="chip" data-q="现在该卖什么品类？">现在该卖什么？</button>
+      <button class="chip" data-q="差评里最大的痛点是什么？">用户痛点</button>
+      <button class="chip" data-q="哪家供应商性价比最高？">供应商推荐</button>
+      <button class="chip" data-q="这个品类有哪些风险？">风险提示</button>
+    </div>
+    <div class="chat-input-wrap">
+      <input id="chatInput" type="text" placeholder="问我关于选品的任何问题…" autocomplete="off" />
+      <button class="chat-send" id="chatSend" title="发送"><i data-lucide="send"></i></button>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

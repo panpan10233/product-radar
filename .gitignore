@@ -1,0 +1,36 @@
+# Python bytecode / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets / local config (NEVER commit)
+.env
+.env.*
+!.env.example
+*.local.json
+
+# Runtime state / logs
+*.log
+*.pid
+.DS_Store
+Thumbs.db
